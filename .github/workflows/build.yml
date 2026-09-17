@@ -1,0 +1,39 @@
+name: Build gallery
+
+# Only drawings trigger this. The generated files are ignored, otherwise the
+# commit this job makes would trigger the job again.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.json'
+      - '!index.json'
+      - 'build.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-gallery
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: node build.mjs
+
+      - name: Commit what changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.json preview.svg docs README.md
+          git diff --staged --quiet && echo "nothing to commit" && exit 0
+          git commit -m "chore: rebuild gallery"
+          git push
