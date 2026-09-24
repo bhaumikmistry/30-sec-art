@@ -5,7 +5,7 @@ to talk yourself out of it.
 
 [![Recent drawings](preview.svg)](https://bhaumikmistry.github.io/30-sec-art/)
 
-**[See all 99 drawings →](https://bhaumikmistry.github.io/30-sec-art/)**
+**[See all 100 drawings →](https://bhaumikmistry.github.io/30-sec-art/)**
 &nbsp;·&nbsp;
 [By year](https://www.bhaumikmistry.com/projects/30-sec-art-grid)
 &nbsp;·&nbsp;
